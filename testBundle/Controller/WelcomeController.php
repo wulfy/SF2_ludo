@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\DemoBundle\Controller;
+namespace Ludo\TestBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -15,4 +15,14 @@ class WelcomeController extends Controller
          */
         return $this->render('AcmeDemoBundle:Welcome:index.html.twig');
     }
+	
+	public function fancyAction()
+	{
+		$request = $this->getRequest();
+		
+		$name = $request->get("name");
+		$color = $request->get("color");
+		$data = array("name"=>$name,"color"=>$color);
+		return $this->render('LudoTestBundle:Welcome:welcome.html.twig',$data);
+	}
 }

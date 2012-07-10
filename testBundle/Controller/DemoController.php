@@ -1,10 +1,14 @@
 <?php
+/**
+ensemble de tests de symfony
+sert de demo, basé sur la démo officielle de symfony
+**/
 
 namespace Ludo\Testbundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Acme\DemoBundle\Form\ContactType;
+use Ludo\TestBundle\Form\ContactType;
 
 // these import the "@Route" and "@Template" annotations
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -13,25 +17,27 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DemoController extends Controller
 {
     /**
-     * @Route("/", name="_demo")
+     * @Route("/", name="_demo_ludo")
      * @Template()
      */
     public function indexAction()
     {
-        return array();
+		$response = $this->forward('LudoTestBundle:Welcome:fancy', array('name' => "ludo", 'color' => 'green'));
+		return $response;
+        //return array();
     }
 
     /**
-     * @Route("/hello/{name}", name="_demo_hello")
+     * @Route("/hello/{name}&{color}", name="_demo_ludo_hello")
      * @Template()
      */
-    public function helloAction($name)
+    public function helloAction($name,$color)
     {
-        return array('name' => $name);
+        return array('name' => $name,'color' => $color);
     }
 
     /**
-     * @Route("/contact", name="_demo_contact")
+     * @Route("/contact", name="_demo_ludo_contact")
      * @Template()
      */
     public function contactAction()
