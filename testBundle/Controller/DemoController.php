@@ -60,4 +60,22 @@ class DemoController extends Controller
 
         return array('form' => $form->createView());
     }
+	
+	/**
+     * @Route("/{page}", name="_demo_ludo_404")
+     * @Template()
+     */
+    public function notFoundPageAction($page)
+    {
+			die("page :".$page." not found 404");
+	}
+	
+	/**
+     * @Route("/{rep}/*", name="_demo_ludo_404_rep")
+     * @Template()
+     */
+    public function notFoundRepositoryAction($rep)
+    {
+			die("repository: " .$rep. " not found 404");
+	}
 }
